@@ -1,6 +1,16 @@
 {
   "name": "pern-ui",
   "version": "0.1.0",
+  "description": "React-based frontend application for PERN stack",
+  "author": "thrage@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SirThrage/pern.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SirThrage/pern/issues"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -18,8 +28,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "author": "thrage@gmail.com",
-  "license": "MIT",
   "eslintConfig": {
     "extends": [
       "react-app",
