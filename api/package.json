@@ -1,0 +1,99 @@
+{
+  "name": "pern-api",
+  "version": "0.1.0",
+  "description": "Node/Express-based API with socket.io",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npm run build && node build",
+    "dev": "npx nodemon --exec npx babel-node -r dotenv/config src",
+    "build": "rm -rf build && npx webpack --config webpack.prod.js",
+    "test": "echo Error: no test specified && exit 1"
+  },
+  "author": "thrage@gmail.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SirThrage/pern.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SirThrage/pern/issues"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "chalk": "^4.1.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "image-type": "^4.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "pg": "^8.5.1",
+    "read-chunk": "^3.2.0",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/eslint-plugin": "^7.12.1",
+    "@babel/node": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/runtime": "^7.12.1",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-webpack-alias": "^2.1.2",
+    "copy-webpack-plugin": "^6.3.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "nodemon": "^2.0.6",
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0",
+    "webpack-merge": "^5.3.0",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime"
+      ],
+      [
+        "@babel/plugin-proposal-class-properties"
+      ],
+      [
+        "babel-plugin-webpack-alias",
+        {
+          "config": "./webpack.config.js"
+        }
+      ]
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended"
+    ],
+    "env": {
+      "node": true,
+      "commonjs": true,
+      "es6": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "allowImportExportEverywhere": true
+    },
+    "rules": {
+      "eqeqeq": [ "warn" ],
+      "no-unused-vars": [ "warn" ],
+      "prefer-const": [ "warn" ],
+      "no-var": [ "warn" ],
+      "prefer-arrow-callback": [ "warn" ]
+    }
+  }
+}
