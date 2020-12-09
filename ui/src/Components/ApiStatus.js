@@ -20,7 +20,7 @@ export const ApiStatus = () => {
           <span style={{ fontWeight: 'bold', color: 'green' }}>Available</span>
         :
           <span style={{ fontWeight: 'bold', color: 'red' }}>Unavailable</span>
-      }.
+      }.&nbsp;
     </div>
   )
 }

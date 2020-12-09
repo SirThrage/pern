@@ -3,7 +3,7 @@ import { verify, TokenExpiredError, sign } from 'jsonwebtoken';
 const {
   TOKEN_SECRET = 'CHANGE_ME',
   // 1 day = 86400000, 5 minutes = 300000
-  TOKEN_EXPIRE_MS = 86400000,
+  TOKEN_EXPIRE_MS = 300000,
 } = process.env;
 
 export const checkAuth = ( req, res, next ) => {

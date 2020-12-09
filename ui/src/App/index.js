@@ -1,14 +1,12 @@
 import { ApiStatus, SocketStatus, TestSocket } from "Components";
-import { SocketProvider } from "Providers";
-
-import './App.scss';
+import { SocketProvider, UserProvider } from "Providers";
 
 export const App = () => (
-  <div id="App">
+  <UserProvider>
     <ApiStatus />
     <SocketProvider>
       <SocketStatus />
       <TestSocket />
     </SocketProvider>
-  </div>
+  </UserProvider>
 )

@@ -5,6 +5,7 @@ services:
     build: ./api
     environment: 
       PGHOST: db
+      CORS_WHITELIST: ${CORS_WHITELIST:-http://localhost,http://localhost:3000}
     command: npm start
     ports:
       - "8080:8080"
@@ -26,7 +27,7 @@ services:
     build:
       context: ./ui
       args:
-        REACT_APP_API: http://localhost:8080
+        REACT_APP_API: ${REACT_APP_API:-http://localhost:8080}
     environment: 
       PORT: 80
     command: nginx -g "daemon off";

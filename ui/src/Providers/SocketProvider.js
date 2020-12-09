@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from 'react';
 import io from 'socket.io-client';
-import { baseURL, GetCookie } from 'API';
+import { GetCookie } from 'API';
+
+const {
+  REACT_APP_API = 'http://localhost:8080',
+} = process.env;
 
 export const SocketContext = createContext();
-
-export let Socket;
-
-const { NODE_ENV } = process.env;
 
 export const SocketProvider = ({ children }) => {
   const { Provider } = SocketContext;
@@ -15,14 +15,9 @@ export const SocketProvider = ({ children }) => {
   const [ connected, setConnected ] = useState();
 
   useEffect(() => {
-    Socket = socket;
-    if ( NODE_ENV === 'development' ) window.socket = socket;
-  }, [ socket ]);
-
-  useEffect(() => {
-    const _socket = io( baseURL, {
+    const _socket = io( REACT_APP_API, {
       query: GetCookie(),
-      path: `/socket.io`,
+      resource: `/socket.io`,
     })
     .on( 'connect', () => {
       setConnected( true );

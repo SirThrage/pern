@@ -6,7 +6,6 @@ Dockerfile
 README.md
 
 .eslintcache
-.env*
 
 node_modules
 build

@@ -1,0 +1,27 @@
+.login-modal {
+
+  > .panel {
+    .login-fields {
+      display: flex;
+      flex-direction: column;
+
+      > * {
+        margin: 4px;
+      }
+
+      > button {
+        align-self: center;
+      }
+    }
+  }
+
+  .login-message {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    height: 48px;
+    width: 256px;
+  }
+}

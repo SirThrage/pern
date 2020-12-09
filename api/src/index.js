@@ -6,9 +6,9 @@ import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import chalk from 'chalk';
 
-import { checkAuth, logDatabase, logError, logExpress, logSocket, refreshToken } from 'Environment';
+import { checkAuth, logDatabase, logError, logExpress, logSocket, refreshToken, verifyCookie } from 'Environment';
 
-import { SampleRoute, ImageRoute } from 'Routes';
+import { SampleRoute, ImageRoute, LoginRoute } from 'Routes';
 import { SampleHandler } from 'Handlers';
 import { query } from 'Database';
 
@@ -44,13 +44,12 @@ app.get( '/status', ( req, res ) => res.status( 200 ).end() );
 // Add routes here
 app.use( '/sample', SampleRoute );
 app.use( '/image', ImageRoute );
+app.use( '/login', LoginRoute );
 
 // Send a 404 as a fallback if no routes match
 app.all( '*', checkAuth, ( req, res ) => res.status( 404 ).end() );
 
 io
-/*
-// Uncomment this code block to enable token verification for socket connections.
 .use(( socket, next ) => {
   const { handshake: { query: { token } } } = socket;
   if ( !token ) socket.disconnect();
@@ -58,7 +57,6 @@ io
     .then(() => next())
     .catch(() => socket.disconnect());
 })
-*/
 .on( 'connection', socket => {
   // Add socket handlers here
   SampleHandler( socket );

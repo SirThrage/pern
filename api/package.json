@@ -103,7 +103,8 @@
       ],
       "prefer-arrow-callback": [
         "warn"
-      ]
+      ],
+      "requireConfigFile": false
     }
   }
 }
