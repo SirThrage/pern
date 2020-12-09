@@ -44,23 +44,69 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: pern_init; Type: TABLE; Schema: public; Owner: postgres
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.pern_init (
-    test character varying
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    username character varying NOT NULL,
+    password character varying NOT NULL
 );
 
 
-ALTER TABLE public.pern_init OWNER TO postgres;
+ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Data for Name: pern_init; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-COPY public.pern_init (test) FROM stdin;
-pern_db_response
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, username, password) FROM stdin;
+1	user	$2b$10$R3H.89dZPm7Y9QI6LV7ceOoYqE6His0yNsosslnvmwRMeTn1J0pTa
 \.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 1, true);
+
+
+--
+-- Name: users users_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pk PRIMARY KEY (id);
 
 
 --
