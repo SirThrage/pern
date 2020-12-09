@@ -6,6 +6,7 @@ services:
     environment: 
       PGHOST: db
       CORS_WHITELIST: ${CORS_WHITELIST:-http://localhost,http://localhost:3000}
+      TOKEN_SECRET: ${TOKEN_SECRET:-CHANGE_ME}
     command: npm start
     ports:
       - "8080:8080"
